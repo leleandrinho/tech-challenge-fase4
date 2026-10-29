@@ -1,0 +1,7 @@
+pandas
+numpy
+torch
+transformers
+accelerate
+sentence-transformers
+rank-bm25
