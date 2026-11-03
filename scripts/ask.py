@@ -66,6 +66,9 @@ def mostrar(r):
 
 
 parser = argparse.ArgumentParser(description="Voice of Customer Intelligence com RAG (Olist)")
+grupo_atraso = parser.add_mutually_exclusive_group() # criando parser para filtro de atraso na entrega. esse comando serve para impedir de utilizar os filtros juntos.
+grupo_atraso.add_argument("--com-atraso", action="store_true", help="só pedidos entregues com atraso")
+grupo_atraso.add_argument("--sem-atraso", action="store_true", help="só pedidos entregues no prazo")
 parser.add_argument("pergunta", nargs="?", help="se omitida, abre o modo interativo")
 parser.add_argument("--k", type=int, default=config.TOP_K, help="avaliações recuperadas")
 parser.add_argument("--sem-filtros", action="store_true", help="desliga os filtros automáticos por nota")
@@ -82,6 +85,10 @@ if args.estado:
     filtros["estado"] = args.estado
 if args.categoria:
     filtros["categoria"] = args.categoria
+if args.com_atraso:
+    filtros["atraso"] = True
+if args.sem_atraso:
+    filtros["atraso"] = False
 
 print("Carregando índice e modelos (só na primeira vez)...")
 recursos = carregar_recursos(com_llm=not args.so_recuperacao)

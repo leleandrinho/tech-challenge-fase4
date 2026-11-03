@@ -49,15 +49,20 @@ def processar_pergunta(pergunta):
         return consulta, filtros
 
     texto = remover_acentos(consulta.lower())
-    nota = re.search(r"\bnota\s*(?:igual a\s*|de\s*)?([1-5])\b", texto)
+    nota = re.search(r"\bnotas?\s*(?:igual a\s*|de\s*)?([1-5])\b", texto)
 
     if nota:
         filtros["nota_min"] = int(nota.group(1))
         filtros["nota_max"] = int(nota.group(1))
+        consulta = re.sub(r"\b(?:com\s+(?:a\s+)?)?notas?\s*(?:igual a\s*|de\s*)?[1-5]\b", "",
+                      consulta, flags=re.IGNORECASE)
+        consulta = " ".join(consulta.split())
     elif re.search(r"insatisfeit|nota[s]? baix|avaliac\w* negativ|reclama", texto):
         filtros["nota_max"] = config.NOTA_MAX_NEGATIVA
     elif re.search(r"elogi|(?<!in)satisfeit|nota[s]? alta|avaliac\w* positiv", texto):
         filtros["nota_min"] = config.NOTA_MIN_POSITIVA
+    if not consulta:
+        consulta = pergunta
     return consulta, filtros
 
 
