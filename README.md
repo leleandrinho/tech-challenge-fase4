@@ -456,7 +456,7 @@ Conjunto de avaliação: **17 perguntas** (10 válidas, 4 fora do escopo e 3 sem
 | BM25 pura (lexical) | 0,57 | 100% | 207 ms |
 | Híbrida (BM25 + vetorial + RRF) | 0,61 | 100% | 185 ms |
 
-![Comparação das estratégias de recuperação](docs/imgs/avaliacao_recuperacao.png)
+![Comparação das estratégias de recuperação](docs/imgs/avaliacao_recuperacao.PNG)
 
 Leitura dos resultados:
 
@@ -488,7 +488,7 @@ Leitura dos resultados:
 | sem evidência | O que dizem sobre a política de devolução para compras feitas no exterior? | recusou | 0,64 | correto |
 | sem evidência | Há relatos de problemas com o programa de fidelidade e pontos? | recusou | 0,55 | correto |
 
-![Resultados dos guardrails](docs/imgs/avaliacao_guardrails.png)
+![Resultados dos guardrails](docs/imgs/avaliacao_guardrails.PNG)
 
 | Métrica | Resultado |
 |---|---|
@@ -515,7 +515,7 @@ Leitura dos resultados:
 
 As capturas de tela com perguntas, respostas e evidências recuperadas ficam em `docs/imgs/`.
 
-`![Pergunta sobre entrega](docs/imgs/exemplo_entrega.png)`
+![Pergunta sobre entrega](docs/imgs/exemplo_entrega.PNG)
 
 Sugestões de perguntas para testar:
 
