@@ -14,7 +14,7 @@ MODELO_EMBEDDINGS = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 MODELO_GERACAO = "Qwen/Qwen2.5-1.5B-Instruct"
 
 # recuperação
-TOP_K = 6                   # avaliações enviadas ao LLM (colocar no readme que por se tratar de perguntas agregadas, estamos colocando mais que na aulas)
+TOP_K = 8                   # avaliações enviadas ao LLM (colocar no readme que por se tratar de perguntas agregadas, estamos colocando mais que na aulas)
 CANDIDATOS_POR_BUSCA = 30   # candidatos que cada busca (BM25 e vetorial) entrega para o RRF
 RRF_K = 60                  # constante do RRF
 
