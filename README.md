@@ -389,7 +389,7 @@ Os filtros enriquecem a recuperação com metadados, mas **reduzem a base consul
 
 ### Filtro de região (`--estado`)
 
-![Top 10 estados — avaliações (clientes)](docs\imgs\image-2.png)
+![Top 10 estados — avaliações (clientes)](docs/imgs/image-2.png)
 
 **Este é o filtro que mais limita a base.** As avaliações do Olist são muito concentradas em poucos estados, especialmente SP, RJ e MG. Em estados com pouco volume, o número de avaliações **com comentário** é pequeno, e combinar o estado com nota, categoria ou atraso pode deixar apenas algumas dezenas de documentos, ou menos.
 
