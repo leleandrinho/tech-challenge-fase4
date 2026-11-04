@@ -56,7 +56,7 @@ Arquivos utilizados (colocar em `data/raw/`):
 | `olist_order_items_dataset.csv` | itens de cada pedido (ponte para os produtos) |
 | `olist_products_dataset.csv` | categoria de cada produto |
 
-![Schema dos Dados](docs\imgs\image-1.png)
+![Schema dos Dados](.\docs\imgs\image-1.png)
 
 Os arquivos de pagamentos, vendedores e a tabela de tradução de categorias **não são usados**. As categorias permanecem em português, exatamente como vêm no dataset (por exemplo, `beleza_saude`, `informatica_acessorios`).
 
