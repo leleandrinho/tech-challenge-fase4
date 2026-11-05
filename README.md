@@ -3,7 +3,6 @@
 Projeto do **Tech Challenge Fase 4** da PosTech. Uma solução de Retrieval-Augmented Generation (RAG) que permite a gestores e analistas fazerem perguntas em linguagem natural sobre as avaliações de clientes de um e-commerce e receberem respostas **fundamentadas em avaliações reais**, com a lista das evidências que sustentam cada resposta.
 
 > **Equipe:** Igor Paganin, Leandro Vieira e Thiago Baience
-> **Vídeo de apresentação:** [inserir link]
 
 ---
 
