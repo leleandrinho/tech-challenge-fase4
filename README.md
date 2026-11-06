@@ -288,12 +288,12 @@ Valores utilizados (em `src/config.py`):
 - Funciona em CPU. Com GPU compatível com CUDA, a geração fica bem mais rápida.
 - Conexão com a internet apenas na primeira execução, para baixar os modelos.
 
-### Passo a passo
+Há dois caminhos: o **início rápido**, que usa o índice já incluído no repositório, e a **reprodução completa**, que refaz todas as etapas a partir da base original.
 
-**1. Clonar e preparar o ambiente**
+### Instalação (comum aos dois caminhos)
 
 ```bash
-git clone [url-do-repositório]
+git clone https://github.com/leleandrinho/tech-challenge-fase4.git
 cd tech-challenge-fase4
 
 python -m venv .venv
@@ -301,37 +301,41 @@ source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-**2. Baixar a base**
+### Caminho A: início rápido (usa o índice do repositório)
 
-Baixe o dataset no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data) e coloque os CSVs listados na seção 2 em `data/raw/`.
+A pasta `indice/` já está no repositório, com `documentos.json` e `embeddings.npy` gerados a partir da base completa. Não é preciso baixar a base nem rodar o notebook.
 
-**3. Preparar a base do RAG**
+```bash
+python scripts/ask.py                         # perguntas interativas
+python scripts/evaluate.py                    # recuperação e guardrails, sem o LLM
+python scripts/evaluate.py --com-geracao      # também gera as respostas e confere as citações
+```
 
-Execute o notebook `notebooks/processamento_EDA_bases.ipynb` do início ao fim. Ao final, confira se existe `data/processed/base_rag.csv`.
+Se tudo estiver certo, o `ask.py` exibe `Pronto: 35,027 avaliações indexadas.` Na primeira execução, os modelos são baixados da internet.
 
-**4. Construir o índice (uma única vez)**
+### Caminho B: reprodução completa
+
+Use este caminho para refazer o processamento do zero, ou se alterar a base, o modelo de embeddings ou algum parâmetro de indexação.
+
+**1. Baixar a base.** Baixe o dataset no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data) e coloque os CSVs listados na seção 2 em `data/raw/`.
+
+**2. Preparar a base do RAG.** Execute o notebook `notebooks/processamento_EDA_bases.ipynb` do início ao fim. Ao final, confira se existe `data/processed/base_rag.csv`.
+
+**3. Reconstruir o índice.**
 
 ```bash
 python scripts/build_index.py --limite 2000   # teste rápido, opcional
 python scripts/build_index.py                 # base completa (alguns minutos em CPU)
 ```
 
-Isso gera a pasta `indice/` com `documentos.json` e `embeddings.npy`. Se a base for alterada, o índice precisa ser refeito.
+Isso **sobrescreve** a pasta `indice/`.
 
-**5. Fazer perguntas**
+**4. Usar e avaliar** como no caminho A.
 
-```bash
-python scripts/ask.py
-```
-
-**6. Avaliar a solução**
-
-```bash
-python scripts/evaluate.py                    # recuperação e guardrails, sem o LLM
-python scripts/evaluate.py --com-geracao      # também gera as respostas e confere as citações
-```
+> **Atenção:** o índice é específico do modelo de embeddings e da base com que foi gerado. Se você alterar `MODELO_EMBEDDINGS` em `src/config.py` ou a base de dados, é obrigatório refazer a etapa 3.
 
 OBS: Execute sempre os comandos a partir da **pasta raiz** do projeto.
+
 
 ## 10. Como usar a CLI (`ask.py`)
 
