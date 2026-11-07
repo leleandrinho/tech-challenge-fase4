@@ -154,8 +154,6 @@ def avaliar_guardrails(recursos, gerar=False):
     print(f"    maior similaridade entre perguntas NÃO válidas: {max(similaridades['nao_valida']):.2f}")
     print(f"    menor similaridade entre perguntas válidas:     {min(similaridades['valida']):.2f}")
     print(f"    LIMIAR_MELHOR_SIMILARIDADE atual (config.py):   {config.LIMIAR_MELHOR_SIMILARIDADE:.2f}")
-    print("    (o ideal é um limiar entre a maior 'não válida' e a menor 'válida'; se elas se sobrepõem,")
-    print("     nenhum limiar é perfeito: escolha o que equilibra recusa correta e falsa recusa)")
     if not gerar:
         print("\n  Obs.: sem geração só a primeira camada é testada; perguntas 'sem_evidencia' com")
         print("  similaridade alta só serão recusadas pelo modelo (rode com --com-geracao).")
